@@ -1,4 +1,5 @@
-/* the styles for the elements */
+
+
 * {
     margin: 0;
     padding: 0;
@@ -56,7 +57,7 @@ blockquote {
     src: url("../fonts/American Captain.ttf");
 }
 
-/* the styles for the header */
+
 header {
     background: linear-gradient(to right, #1e293b, #0f172a);
     padding: 1em 1.5em;
@@ -82,7 +83,6 @@ header {
 }
 
 
-/*** menu styles ***/
 .navbar {
     background-color: #1e293b;
 
@@ -114,7 +114,6 @@ header {
     display: none;
 }
 
-/* checkbox always hidden */
 .menu-btn {
     display: block;
     /* show menu button */
@@ -127,22 +126,20 @@ header {
     content: "\2630";
 }
 
-/* hamburger symbol */
+
 #checkbox-toggle:checked~.menu {
     display: block;
 }
 
 #checkbox-toggle:checked~.menu-btn::after {
     content: "\2716";
-    /* close (X) symbol */
+   
 }
 
 .menu {
     position: absolute;
-    /* in relation to .navbar */
     left: 0;
     display: none;
-    /* menu initially hidden */
     background-color: #1e293b;
 
     & li:has(.submenu) {
@@ -150,12 +147,12 @@ header {
 
         & small::after {
             content: "\25b6";
-            /* right triangle */
+           
         }
 
         & small {
             margin-left: .25em;
-            /* add space */
+          
         }
 
         &:hover>.submenu {
@@ -166,7 +163,6 @@ header {
 
 .submenu {
     position: absolute;
-    /* with respect to .submenu */
     top: 0;
     left: 100%;
     background-color: #1e293b;
@@ -175,12 +171,12 @@ header {
     display: none;
 }
 
-/* the styles for the main element  */
+
 main {
     padding: 1.5em;
 }
 
-/* the styles for the section */
+
 section {
     margin-bottom: 1.5em;
 }
@@ -213,6 +209,48 @@ section a:focus {
     gap: 1em;
 }
 
+.gamecard {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    padding: 1.25em;
+}
+
+.gamecard img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 12px;
+    background-color: #0f172a;
+    display: block;
+}
+.gamecard img:hover {
+    animation: makeGray 3s forwards;
+}
+
+@keyframes makeGray {
+    from {
+        filter: grayscale(0) blur(0);
+       
+    }
+    to {
+        filter: grayscale(100%) blur(2px);
+      
+    }
+}
+
+.gamecard {
+    transition: transform 0.3s;
+}
+
+.gamecard:hover {
+    transform: scale(1.05);
+}
+.gamecard h3 {
+    text-align: center;
+    margin-bottom: .75em;
+}
+
 .card {
     background-color: #1e293b;
     border: 1px solid #334155;
@@ -223,6 +261,12 @@ section a:focus {
 .card h3 {
     color: #22c55e;
 }
+
+.bottom-figure {
+    padding-top: 8em;
+}
+
+
 
 figure {
     margin: 0;
@@ -246,6 +290,7 @@ figcaption {
     padding: 1.5em;
 }
 
+
 .feature-text {
     margin-bottom: 1em;
 }
@@ -264,7 +309,7 @@ figcaption {
     color: #cbd5e1;
 }
 
-/* the styles for the sidebar */
+
 aside {
     background-color: #0f172a;
     border: 2px solid #38bdf8;
@@ -302,13 +347,50 @@ aside a:hover,
 aside a:focus {
     color: #22c55e;
 }
+.home-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5em;
+}
 
-/* media query - for line length breakpoint */
+.home-card-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1em;
+}
+
+.home-feature {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5em;
+	align-items: center;
+}
+
+.home-resources ul {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: .75em;
+}
+
+
+
+
 @media only screen and (min-width: 630px) {
     .offer-cards {
         flex-direction: row;
         flex-wrap: wrap;
     }
+      .gamecard {
+        flex-basis: calc(50% - 1em);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .gamecard {
+        flex-basis: calc(25% - 1em);
+    }
+}  
 
     .card {
         flex-basis: calc(50% - 1em);
@@ -334,7 +416,7 @@ aside a:focus {
     .resource-panel li {
         flex-basis: calc(50% - 1em);
     }
-}
+
 
 label {
     display: block;
@@ -438,15 +520,13 @@ button:focus {
     color: #22c55e;
 }
 
-/* media query - for menu breakpoint */
-@media only screen and (min-width: 860px) {
+
+@media only screen and (min-width: 1250px) {
     .menu {
         position: relative;
-        /* change position */
         display: flex;
-        /* show horizontal menu */
         justify-content: space-around;
-        /* adjust menu spacing */
+       
     }
 
     .menu-btn {
@@ -458,7 +538,7 @@ button:focus {
 
         & small::after {
             content: "\25bc";
-            /* down triangle */
+           
         }
     }
 
@@ -477,4 +557,41 @@ button:focus {
     .resource-panel li {
         flex: 1;
     }
+}
+@media only screen and (min-width: 700px) {
+	.home-card-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.home-resources ul {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.home-grid {
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+	.home-hero {
+		grid-column: 1 / span 12;
+	}
+
+	.home-card-grid {
+		grid-column: 1 / span 12;
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.home-feature {
+		grid-column: 1 / span 12;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.home-resources {
+		grid-column: 1 / span 12;
+	}
+
+	.home-resources ul {
+		grid-template-columns: 1fr;
+	}
 }
